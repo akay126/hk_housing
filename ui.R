@@ -1,7 +1,7 @@
 
 library('shiny')
 library('shinydashboard')
-library('shinyWidgets')
+# library('shinyWidgets')
 library('leaflet')
 library('RColorBrewer')
 library('DT')
@@ -22,6 +22,7 @@ header = dashboardHeader(
                  from = "New User",
                  message = "How do I register?",
                  icon = icon("question"),
+                 
                  time = "13:45"
                ),
                messageItem(
@@ -59,7 +60,7 @@ sidebar = dashboardSidebar(
     
     menuItem("Geospatial Analysis", 
              icon = icon("globe"),
-             menuSubItem( "Year by Year metrics by District in Hong Kong", 
+             menuSubItem( "Year by Year metrics by Districts in Hong Kong", 
                           tabName = "ga",
                           icon = icon("calendar")),
              menuSubItem( "Age of Buildings in Hong Kong", 
@@ -68,7 +69,7 @@ sidebar = dashboardSidebar(
              menuSubItem( "All 431 Sub-Districts in Hong Kong", 
                           tabName = "ga2",
                           icon = icon("map")),
-             menuItem("Year by Year metrics by Sub - District in Hong Kong", 
+             menuItem("Year by Year metrics by Sub - Districts in Hong Kong", 
                       icon = icon("map"), 
                       tabName = "ga3",
                       badgeLabel = "soon", 
@@ -79,7 +80,7 @@ sidebar = dashboardSidebar(
              menuSubItem("Graphs",
                          tabName = "ch",
                          icon = icon("signal")),
-             menuSubItem("volin Chart",
+             menuSubItem("Violin  Chart",
                          tabName = "ch1",
                          icon = icon("signal"))
     )
@@ -167,14 +168,24 @@ body = dashboardBody(
     ),
     #################################### SUB MAP MENU  ########################        
     tabItem(tabName = "ga",
-            leafletOutput( "map",width = "100%", height = 300),
+            ################# INFO BOX IN MAP #########
+            fluidRow(valueBoxOutput("dist_name"),
+                     valueBoxOutput("avg_price")
+              # # column(width = 6
+              # #        ),
+              # column(width = 6, 
+              #        valueBoxOutput("avg_price")
+              # )
+            ),
+            br(),
+            leafletOutput( "map",width = "100%", height = 400),
             ################## First map ###################
             absolutePanel(
               ######## DRAGABLE BOX  #####
               id = "timectrl", class = "panel panel-default", fixed = FALSE,
               draggable = TRUE, top = 120, left = "auto", right = 30, bottom = "auto",
               width = 210, height = "auto",
-              h2("Districts in Hong Kong"),
+              h2("Districts of Hong Kong"),
               sliderInput("yr", "Years", min(Centa_fl_18distYR$Year), max(Centa_fl_18distYR$Year),
                           value = 2017 , step = 1,
                           animate = animationOptions(interval = 5000, loop = TRUE)),
@@ -188,16 +199,8 @@ body = dashboardBody(
                               ),
                   selectInput("dist_id", "District of:", unique(Centa_fl_18distYR$ENAME))
                   
-                  ),
-              br(),
-              ################# INFO BOX IN MAP #########
-              fluidRow(
-                column(width = 12,
-                        valueBoxOutput("dist_name")),
-                column(width = 12, 
-                       valueBoxOutput("avg_price")
-                       )
-                    )
+                  )
+              
               ),
       ################################### AGE OF BULDINGS IN HK #########
       tabItem(tabName = "ga1",
