@@ -1,0 +1,12 @@
+name: hk_housing
+title: hk_housing
+username:
+account: ahkay
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 516340
+bundleId: 1646193
+url: https://ahkay.shinyapps.io/hk_housing/
+when: 1539712470.96206
+asMultiple: FALSE
+asStatic: FALSE

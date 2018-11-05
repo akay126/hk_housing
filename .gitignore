@@ -1,0 +1,6 @@
+*.csv
+
+data
+GIS
+.RData
+.Rhistory
