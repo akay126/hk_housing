@@ -5,8 +5,8 @@ account: ahkay
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 516340
-bundleId: 1646193
+bundleId: 1684635
 url: https://ahkay.shinyapps.io/hk_housing/
-when: 1539712470.96206
+when: 1541488359.98522
 asMultiple: FALSE
 asStatic: FALSE

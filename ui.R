@@ -1,13 +1,7 @@
 
-library('shiny')
-library('shinydashboard')
-# library('shinyWidgets')
-library('leaflet')
-library('RColorBrewer')
-library('DT')
 
 
-########################################### H E A D E R ##########################################
+############################source############### H E A D E R ##########################################
 header = dashboardHeader(
   title = "BEGU PROJECT",
   

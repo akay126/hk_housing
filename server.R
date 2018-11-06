@@ -1,10 +1,5 @@
 library('shiny')
-library('shinydashboard')
-library('rgdal')
-library('dplyr')
-#source("centa_map.R")
-library('ggplot2')
-library("htmltools")
+
 
 
 
